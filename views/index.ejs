@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link href="/public/main.css" rel="stylesheet">
+    <title>Main</title>
+  </head>
+  <body>
+    <%- include('nav.html') %>
+    <main class="container">
+      <form ref='uploadForm' 
+      id='uploadForm' 
+      action='http://localhost:8000/upload'
+      method="post" 
+      enctype="multipart/form-data">
+      <div id="drop_zone" for="input">
+      <label class="label" id="label" for="input" > 
+        <div class="inner" id="inner" style="padding-top: 40px">
+          <div><img src="../public/images/file.png" alt="upload Image" width="100" height="100"></div>
+          <p class="text-center"></p>
+          <p>클릭해서 이미지 업로드</p>
+        </div>
+      </label>
+    </div>
+      <input type="file" name="sampleFile" id="input" class="input" accept="image/*"  multiple="true" hidden="true">
+      <input type='submit' id='submit' hidden = "true"></button>
+    </form>
+      <!-- 안내 메세지 -->
+      <p class="text-center" style="margin-top: 50px"></p>
+      <h4 class="text-center">불량 이미지를 생성하는 방법</h4>
+      <div class="help" style="margin-top: 20px">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card" style="border-radius: 1rem">
+              <div class="card-body">
+                <h5 class="card-title">1. 이미지 삽입</h5>
+                <p class="card-text">버튼을 클릭하여 <br> 이미지 파일을 업로드합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card" style="border-radius: 1rem">
+              <div class="card-body">
+                <h5 class="card-title">2. 리크 세부 설정</h5>
+                <p class="card-text">리크에 대한 세부 설정을 합니다.<br> 리크의 위치를 지정할 수 있습니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card" style="border-radius: 1rem">
+              <div class="card-body">
+                <h5 class="card-title">3. 이미지 생성 및 저장</h5>
+                <p class="card-text">이미지를 생성하고 <br> 생성한 파일을 다운할 수 있습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      var input = document.getElementById("input");
+      var initLabel= document.getElementById("label");
+      var submit = document.getElementById("submit");
+
+      // 파일 선택시 해당 파일을 서버에 제출
+      input.addEventListener("change", (event) => {
+        submit.click();
+        });
+
+    </script>
+  </body>
+</html>
