@@ -130,5 +130,5 @@ dmypy.json
 
 # dependencies
 /node_modules
-.pkl
+*.pkl
 .DS_Store
