@@ -14,7 +14,7 @@ node.js & npm
 4. npm run start or yarn start
 ```
 
-## 환경설정
+## setting
 ```
 Python version : 3.9.5
 OpenCV version : 4.6.0
