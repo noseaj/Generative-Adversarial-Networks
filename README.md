@@ -9,9 +9,8 @@ node.js & npm
 
 ```
 1. git clone
-2. npm install -g yarn
-3, yarn install
-4. npm run start or yarn start
+2. npm install 
+4. npm run start
 ```
 
 ## setting
