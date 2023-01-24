@@ -31,6 +31,8 @@ Apply Generative Adversarial Nets to generating leak data.
 
 ### Modeling
 > 1. Pre-processing
+>> ![데이터 전처리 아키텍쳐(업데이트 필요)](https://user-images.githubusercontent.com/49435654/214227127-d231629b-cd5d-4150-ab03-8c82ebaaff55.PNG)
+
 > 
 > 2. Modeling
 >> 출처: [DCGAN](https://arxiv.org/pdf/1511.06434.pdf)
