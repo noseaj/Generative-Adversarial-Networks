@@ -16,7 +16,6 @@ Apply Generative Adversarial Nets to generating leak data.
 ## 서비스 화면
 
 ### 메인 화면
-![메인 화면](https://user-images.githubusercontent.com/49435654/214218859-f1b46b25-aefb-4adc-95bf-e7f05fd44500.png)
 
 ### 사용자 설정 화면
 
