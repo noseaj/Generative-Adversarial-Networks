@@ -40,6 +40,8 @@ Apply Generative Adversarial Nets to generating leak data.
 
 
 > 3. Generate Defective Image
+>> ![불량이미지 생성 아키텍쳐(업데이트 필요)](https://user-images.githubusercontent.com/49435654/214229041-a5a0402b-aa18-4c9f-b651-fb126d86e511.PNG)
+
 
 ## Requirements:
 * Python 3.9.5
