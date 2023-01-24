@@ -30,6 +30,15 @@ Apply Generative Adversarial Nets to generating leak data.
 ### Back-End & Front-End
 
 ### Modeling
+> 1. Pre-processing
+> 
+> 2. Modeling [DCGAN](https://arxiv.org/pdf/1511.06434.pdf)
+> DCGAN을 활용하여 모델링 진행
+
+![DCGAN 구조](https://user-images.githubusercontent.com/49435654/214224661-3dd07006-e5b6-425b-a638-c69c3dba77d1.PNG)
+
+
+> 3. Generate Defective Image
 
 ## Requirements:
 * Python 3.9.5
