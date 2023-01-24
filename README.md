@@ -14,7 +14,6 @@ Apply Generative Adversarial Nets to generating leak data.
 3. 불량 이미지 다운로드
 
 ## 서비스 화면
-----------------
 ### 메인 화면
 ![메인 화면](https://user-images.githubusercontent.com/49435654/214218859-f1b46b25-aefb-4adc-95bf-e7f05fd44500.png)
 
@@ -23,7 +22,6 @@ Apply Generative Adversarial Nets to generating leak data.
 ### 불량 이미지 생성 화면
 
 ## 시스템 구성 및 아키텍쳐
------------------
 ### Back-End & Front-End
 
 ### Modeling
@@ -46,8 +44,8 @@ node.js & npm
 ```
 
 ## Team (사미용두)
-[김대현](https://github.com/DevDae)
-[김재윤](https://github.com/kimjaeyoonn)
-[김태영](https://github.com/kty4119)
-[손재성](https://github.com/noseaj)
-[장효영](https://github.com/HyoYoung22)
+* [김대현](https://github.com/DevDae)
+* [김재윤](https://github.com/kimjaeyoonn)
+* [김태영](https://github.com/kty4119)
+* [손재성](https://github.com/noseaj)
+* [장효영](https://github.com/HyoYoung22)
