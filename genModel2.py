@@ -5,9 +5,9 @@ import pickle
 import matplotlib.pylab as plt
 import random
 import copy
-
 import argparse
 import os
+import re
 import random
 import torch
 import torch.nn as nn
@@ -15,7 +15,6 @@ import torch.nn.parallel
 import torch.backends.cudnn as cudnn
 import torch.optim as optim
 import torch.utils.data
-
 import torchvision.utils as vutils
 import numpy as np
 import matplotlib.pyplot as plt
@@ -24,7 +23,6 @@ from torchvision.utils import save_image
 
 
 # Generator Code
-
 class Generator(nn.Module):
     def __init__(self, ngpu):
         super(Generator, self).__init__()
@@ -58,7 +56,10 @@ class Generator(nn.Module):
     
 class Generate_Leak_Img:
     def __init__(self, img):
-        self.img = img
+        try:
+            self.img = cv2.imread(img)
+        except:
+            self.img = img
             
     def open_list(self, file_name):
         with open(file_name,'rb') as f:
@@ -75,7 +76,8 @@ class Generate_Leak_Img:
         return centered_leak[i]
     
     def generate(self, leak, centered_leak, resize_x, resize_y):
-        img = cv2.imread(self.img)
+        #img = cv2.imread(self.img)
+        img = self.img
         leak_img = cv2.imread(leak)
         leak_img = cv2.resize(leak_img,(int(resize_x),int(resize_y)))
             
@@ -91,31 +93,46 @@ class Generate_Leak_Img:
         # seamlessClone으로 합성
         mixed = cv2.seamlessClone(leak_img, img, mask, center, cv2.MIXED_CLONE)
         return mixed
-    
-def main(X, Y, resize_x, resize_y):
-    print(X, Y)
-    print(resize_x, resize_y)
-    img = "./public/images/test.jpg" 
-    leak_img = Generate_Leak_Img(img)
-    centered_leak = {'x': X, 'y': Y}
 
-    # 1. Generator Class 객체 생성
-    device = torch.device('cpu')
-    ngpu = 0
-    Generator_Leak = Generator(ngpu).to(device)
+def list_chunk(lst, n):
+    return [lst[i:i+n] for i in range(0, len(lst), n)]
+
+def main(num, two_dim_arr):
+    img = "./public/images/test.jpg"
+    num = int(num)
+    numbers = re.findall(r'\d+', two_dim_arr)
+    #numbers.split(sep=',', maxsplit=2)
+    numbers = list(map(int, numbers))
+    print(numbers)
+    print(list_chunk(numbers,4))
+    two_dim_arr = list_chunk(numbers,4)
     
-    # 2. 모델 사용
-    weights = torch.load('./dcgan_293.pt',map_location=device)
-    Generator_Leak.load_state_dict(weights)
+    for i in range((num)):
+        leak_img = Generate_Leak_Img(img)
+        centered_leak={'x': int(two_dim_arr[i][0]),'y': int(two_dim_arr[i][1])}
+        resize_x = int(two_dim_arr[i][2])
+        resize_y = int(two_dim_arr[i][3])
+        print(centered_leak)
+        print(resize_x, resize_y)
+
+        # 1. Generator Class 객체 생성
+        device = torch.device('cpu')
+        ngpu = 0
+        Generator_Leak = Generator(ngpu).to(device)
     
-    # 3. 리크 생성
-    noise = torch.randn(1, 100, 1, 1, device=device)  
-    leak = Generator_Leak(noise)
-    save_image(leak, './public/images/gen_leak.jpg')
-    leak = './public/images/gen_leak.jpg'
+        # 2. 모델 사용
+        weights = torch.load('./dcgan_293.pt',map_location=device)
+        Generator_Leak.load_state_dict(weights)
     
-    generated_leak_img = leak_img.generate(leak, centered_leak, resize_x, resize_y)
-    cv2.imwrite("./public/images/result.jpg", generated_leak_img) 
+        # 3. 리크 생성
+        noise = torch.randn(1, 100, 1, 1, device=device)  
+        img_fake = Generator_Leak(noise)
+        save_image(img_fake, './public/images/gen_leak.jpg')
+        gen_leak_address = './public/images/gen_leak.jpg'
+    
+        img = leak_img.generate(gen_leak_address, centered_leak, resize_x, resize_y)
+
+    cv2.imwrite("./public/images/result.jpg", img) 
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]) 
+    main(sys.argv[1], sys.argv[2]) #sys.argv[1], sys.argv[2]

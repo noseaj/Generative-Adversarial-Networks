@@ -19,8 +19,8 @@
       </div>
       <img id="img" src="../public/images/test.jpg" style="width:800px; height:520px;display: block; margin: 0px auto;display:none;" class="img-fluid" alt="normal image" >
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        
-        <button id= "Btn" type="submit" class="btn btn-primary" style="margin-top: 15px; margin-bottom: 20px; background-color: #3E2F51;">생성</button></div>
+        <span><div id= "reset" class="btn btn-primary" style="margin-top: 15px; margin-bottom: 20px; background-color: #3E2F51;">초기화</div>
+        <span><button id= "Btn" type="submit" class="btn btn-primary" style="margin-top: 15px; margin-bottom: 20px; background-color: #3E2F51;">생성</button></span></div>
     </div>
     <div style=" display: block; margin: 0px auto;">
     <p class="text-center"></p>
@@ -73,9 +73,12 @@
       let startPointX
       let startPointY
       let isDragging=false;
+      const link = document.createElement("a");
+      let leakNum = 0;
+
       document.getElementById('canvas').addEventListener('mousedown', function (e) {
         isDragging = true;
-        console.log(event.offsetX+","+event.offsetY)
+        // console.log(event.offsetX+","+event.offsetY)
         startPointX = event.offsetX
         startPointY =  event.offsetY
       });
@@ -95,15 +98,33 @@
 
       document.getElementById('canvas').addEventListener('mouseup', function (e) {
         isDragging = false;
-        X.value = (event.offsetX+startPointX)/2
-        Y.value = (event.offsetY+startPointY)/2
-        leakHeight.value = (event.offsetY-startPointY)
-        leakWidth.value = (event.offsetX-startPointX)
+        X.value = X.value + "," + parseInt((event.offsetX+startPointX)/2);
+        Y.value = Y.value + "," + parseInt((event.offsetY+startPointY)/2);
+        leakHeight.value = leakHeight.value + "," +Math.abs(parseInt((event.offsetY-startPointY)));
+        leakWidth.value = leakWidth.value + "," +Math.abs(parseInt((event.offsetX-startPointX)));
+        console.log(img.width , img.height)
+        const image = canvas.toDataURL("image/jpeg");
+        link.href = image;
+        img.src = link.href
+        console.log(img.width , img.height)
+        leakNum = leakNum + 1
+
+
+        // console.log(link.href)
       });
 
       Btn.addEventListener('click', function (e) {
         document.getElementById("progressBar").hidden = false;
         setInterval(flashPb, 1000);
+      });
+
+      reset.addEventListener('click', function (e) {
+        img.src = "../public/images/test.jpg"
+        ctx.drawImage(img,0,0,800,520)
+        X.value = null;
+        Y.value = null;
+        leakHeight.value = null;
+        leakWidth.value = null;
       });
 
       function flashPb() {
