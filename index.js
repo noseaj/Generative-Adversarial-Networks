@@ -39,12 +39,24 @@ app.post("/upload", function (req, res) {
 
 app.post("/transfer", function (req, res) {
   let { X, Y, imageName, leakHeight, leakWidth } = req.body;
-  X = parseInt(X);
-  Y = parseInt(Y);
-  leakHeight = Math.abs(parseInt(leakHeight));
-  leakWidth = Math.abs(parseInt(leakWidth));
+  const XArray = X.split(",");
+  const YArray = Y.split(",");
+  const heightArray = leakHeight.split(",");
+  const widthArray = leakWidth.split(",");
+  let leakNum = widthArray.length - 1;
+  let leakInfo = [];
+  for (var i = 0; i < leakNum; i++) {
+    leakInfo.push([
+      Math.ceil((parseInt(XArray.slice(1)[i]) * 5) / 2),
+      Math.ceil((parseInt(YArray.slice(1)[i]) * 5) / 2),
+      Math.ceil((parseInt(widthArray.slice(1)[i]) * 5) / 2),
+      Math.ceil((parseInt(heightArray.slice(1)[i]) * 5) / 2),
+    ]);
+  }
+
   const spawn = require("child_process").spawn;
-  if (isNaN(X) && isNaN(Y)) {
+
+  if (leakHeight == 0) {
     const result_02 = spawn("python", ["genModel.py", imageName]);
     result_02.stdout.on("data", (result) => {
       res.redirect("/result");
@@ -52,10 +64,8 @@ app.post("/transfer", function (req, res) {
   } else {
     const result_02 = spawn("python", [
       "genModel2.py",
-      Math.ceil((X * 5) / 2),
-      Math.ceil((Y * 5) / 2),
-      Math.ceil((leakWidth * 5) / 2),
-      Math.ceil((leakHeight * 5) / 2),
+      leakNum,
+      JSON.stringify(leakInfo),
     ]);
     result_02.stdout.on("data", (result) => {
       res.redirect("/result");

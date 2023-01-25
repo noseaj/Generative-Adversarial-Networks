@@ -20,22 +20,18 @@
       </div>
       <img id="img" src="../public/images/test.jpg" style="width:800px; height:520px;display: block; margin: 0px auto;display:none;" class="img-fluid" alt="normal image" >
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        
-        <button id= "Btn" type="submit" class="btn btn-primary" style="margin-top: 15px; margin-bottom: 20px; background-color: #3E2F51;">생성</button></div>
+        <span><div id= "reset" class="btn btn-primary" style="margin-top: 15px; margin-bottom: 20px; background-color: #3E2F51;">초기화</div>
+        <span><button id= "Btn" type="submit" class="btn btn-primary" style="margin-top: 15px; margin-bottom: 20px; background-color: #3E2F51;">생성</button></span></div>
     </div>
     <div style=" display: block; margin: 0px auto;">
     <p class="text-center"></p>
     
-    <!-- <div class="input-group input-group-sm mb-3"> -->
-      <!-- <span class="input-group-text" id="inputGroup-sizing-sm">X</span> -->
       <input id = 'X' name = 'X' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" hidden>
-      <!-- <span class="input-group-text" id="inputGroup-sizing-sm">Y</span> -->
       <input id = 'Y' name = 'Y' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" hidden>
       <input id="imageName" type="text" name = 'imageName' value ='<%= post %>' hidden>
       <input id="leakHeight" name = 'leakHeight' value = 0 hidden>
       <input id="leakWidth" name = 'leakWidth' value = 0 hidden>
       
-    <!-- </div> -->
     </form>
     
     </div>
@@ -57,27 +53,15 @@
       {
       ctx.drawImage(img,0,0,800,520)
       }
-
-      // document.getElementById('canvas').addEventListener('click', function (e) {
-      //   // alert("X Coordinate: " + event.offsetX + " Y Coordinate: " + event.offsetY);
-      //   let sX = event.offsetX
-      //   let sY = event.offsetY
-      //   var ctx = canvas.getContext('2d');
-      //   ctx.clearRect(0, 0, canvas.width, canvas.height);
-      //   ctx.drawImage(img,0,0,800,520)
-      //   ctx.strokeStyle = "red";
-      //   ctx.strokeRect(sX-16, sY-16, 25, 25)
-      //   X.value = event.offsetX
-      //   Y.value = event.offsetY
-      //   // location.href = "/result";
-      // });
-
+      
       let startPointX
       let startPointY
       let isDragging=false;
+      const link = document.createElement("a");
+      let leakNum = 0;
+
       document.getElementById('canvas').addEventListener('mousedown', function (e) {
         isDragging = true;
-        console.log(event.offsetX+","+event.offsetY)
         startPointX = event.offsetX
         startPointY =  event.offsetY
       });
@@ -97,10 +81,14 @@
 
       document.getElementById('canvas').addEventListener('mouseup', function (e) {
         isDragging = false;
-        X.value = (event.offsetX+startPointX)/2
-        Y.value = (event.offsetY+startPointY)/2
-        leakHeight.value = (event.offsetY-startPointY)
-        leakWidth.value = (event.offsetX-startPointX)
+        X.value = X.value + "," + parseInt((event.offsetX+startPointX)/2);
+        Y.value = Y.value + "," + parseInt((event.offsetY+startPointY)/2);
+        leakHeight.value = leakHeight.value + "," +Math.abs(parseInt((event.offsetY-startPointY)));
+        leakWidth.value = leakWidth.value + "," +Math.abs(parseInt((event.offsetX-startPointX)));
+        const image = canvas.toDataURL("image/jpeg");
+        link.href = image;
+        img.src = link.href
+        leakNum = leakNum + 1
       });
 
       Btn.addEventListener('click', function (e) {
@@ -108,12 +96,19 @@
         setInterval(flashPb, 1000);
       });
 
+      reset.addEventListener('click', function (e) {
+        img.src = "../public/images/test.jpg"
+        ctx.drawImage(img,0,0,800,520)
+        X.value = null;
+        Y.value = null;
+        leakHeight.value = null;
+        leakWidth.value = null;
+      });
+
       function flashPb() {
         pNum = pNum + 25;
         Pb.setAttribute("style", `width: ${pNum}%`);
       }
-    
-
      
     </script>
       
