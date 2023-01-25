@@ -1,7 +1,5 @@
 # Generative-Adversarial-Networks
-<<<<<<< HEAD
-(22/07 ~ 23/02) 광운대학교 산학연계 프로젝트
-=======
+
 (22/07 ~ 23/02) 광운대학교 산학연계 프로젝트 - Team 사미용두
 
 ## Introduction
