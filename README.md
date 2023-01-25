@@ -23,7 +23,11 @@ Apply Generative Adversarial Nets to generating leak data.
 
 ### 사용자 설정 화면
 
+![사용자지정화면](https://user-images.githubusercontent.com/49435654/214539567-062acd1a-b716-4b74-b032-76c2cd566987.png)
+
 ### 불량 이미지 생성 화면
+
+![불량 이미지 생성 화면](https://user-images.githubusercontent.com/49435654/214539519-1c42ed91-1b0f-4b55-ae23-2ec2cc26d761.png)
 
 ## 시스템 구성 및 아키텍쳐
 
