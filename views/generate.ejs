@@ -26,16 +26,12 @@
     <div style=" display: block; margin: 0px auto;">
     <p class="text-center"></p>
     
-    <!-- <div class="input-group input-group-sm mb-3"> -->
-      <!-- <span class="input-group-text" id="inputGroup-sizing-sm">X</span> -->
       <input id = 'X' name = 'X' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" hidden>
-      <!-- <span class="input-group-text" id="inputGroup-sizing-sm">Y</span> -->
       <input id = 'Y' name = 'Y' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" hidden>
       <input id="imageName" type="text" name = 'imageName' value ='<%= post %>' hidden>
       <input id="leakHeight" name = 'leakHeight' value = 0 hidden>
       <input id="leakWidth" name = 'leakWidth' value = 0 hidden>
       
-    <!-- </div> -->
     </form>
     
     </div>
@@ -57,21 +53,7 @@
       {
       ctx.drawImage(img,0,0,800,520)
       }
-
-      // document.getElementById('canvas').addEventListener('click', function (e) {
-      //   // alert("X Coordinate: " + event.offsetX + " Y Coordinate: " + event.offsetY);
-      //   let sX = event.offsetX
-      //   let sY = event.offsetY
-      //   var ctx = canvas.getContext('2d');
-      //   ctx.clearRect(0, 0, canvas.width, canvas.height);
-      //   ctx.drawImage(img,0,0,800,520)
-      //   ctx.strokeStyle = "red";
-      //   ctx.strokeRect(sX-16, sY-16, 25, 25)
-      //   X.value = event.offsetX
-      //   Y.value = event.offsetY
-      //   // location.href = "/result";
-      // });
-
+      
       let startPointX
       let startPointY
       let isDragging=false;
@@ -80,7 +62,6 @@
 
       document.getElementById('canvas').addEventListener('mousedown', function (e) {
         isDragging = true;
-        // console.log(event.offsetX+","+event.offsetY)
         startPointX = event.offsetX
         startPointY =  event.offsetY
       });
@@ -104,15 +85,10 @@
         Y.value = Y.value + "," + parseInt((event.offsetY+startPointY)/2);
         leakHeight.value = leakHeight.value + "," +Math.abs(parseInt((event.offsetY-startPointY)));
         leakWidth.value = leakWidth.value + "," +Math.abs(parseInt((event.offsetX-startPointX)));
-        console.log(img.width , img.height)
         const image = canvas.toDataURL("image/jpeg");
         link.href = image;
         img.src = link.href
-        console.log(img.width , img.height)
         leakNum = leakNum + 1
-
-
-        // console.log(link.href)
       });
 
       Btn.addEventListener('click', function (e) {
@@ -133,8 +109,6 @@
         pNum = pNum + 25;
         Pb.setAttribute("style", `width: ${pNum}%`);
       }
-    
-
      
     </script>
       

@@ -98,12 +98,13 @@ leak_center_data = {'L_01-1_T': 'L_01_1_Top.pkl', 'L_01-1_R': 'L_01_1_Rotation.p
                     'L_01-6_T': 'L_01_6_Top.pkl', 'L_01-6_R': 'L_01_6_Right.pkl'}
 
 def main(Name):
+    print(Name)
     img = "./public/images/test.jpg" 
     leak_img = Generate_Leak_Img(img)
 
     # 정상 이미지 타입 확인
     img_type = leak_img.check_img(Name, leak_center_data)
-    
+    print(img_type)
     # 해당 이미지 타입에서 발생했던 리크 위치
     typical_leak = leak_img.open_list(img_type)
     
@@ -129,4 +130,4 @@ def main(Name):
     cv2.imwrite("./public/images/result.jpg", generated_leak_img) 
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    main(sys.argv[1])# sys.argv[1]

@@ -47,7 +47,6 @@ app.post("/transfer", function (req, res) {
   let leakInfo = [];
   for (var i = 0; i < leakNum; i++) {
     leakInfo.push([
-      //Math.ceil((X * 5) / 2),
       Math.ceil((parseInt(XArray.slice(1)[i]) * 5) / 2),
       Math.ceil((parseInt(YArray.slice(1)[i]) * 5) / 2),
       Math.ceil((parseInt(widthArray.slice(1)[i]) * 5) / 2),
@@ -55,33 +54,21 @@ app.post("/transfer", function (req, res) {
     ]);
   }
 
-  // X = parseInt(X);
-  // Y = parseInt(Y);
-  // leakHeight = Math.abs(parseInt(leakHeight));
-  // leakWidth = Math.abs(parseInt(leakWidth));
-  console.log(leakNum, leakInfo);
-  console.log(JSON.stringify(leakInfo));
   const spawn = require("child_process").spawn;
-  const result_02 = spawn("python", [
-    "genModel2.py",
-    leakNum,
-    JSON.stringify(leakInfo),
-  ]);
-  result_02.stdout.on("data", (result) => {
-    res.redirect("/result");
-  });
 
-  // if (isNaN(X) && isNaN(Y)) {
-  //   console.log("여기?");
-  //   const result_02 = spawn("python", ["genModel.py", imageName]);
-  //   result_02.stdout.on("data", (result) => {
-  //     res.redirect("/result");
-  //   });
-  // } else {
-  //
-  //   const result_02 = spawn("python", ["genModel2.py", leakNum, leakInfo]);
-  //   result_02.stdout.on("data", (result) => {
-  //     res.redirect("/result");
-  //   });
-  // }
+  if (leakHeight == 0) {
+    const result_02 = spawn("python", ["genModel.py", imageName]);
+    result_02.stdout.on("data", (result) => {
+      res.redirect("/result");
+    });
+  } else {
+    const result_02 = spawn("python", [
+      "genModel2.py",
+      leakNum,
+      JSON.stringify(leakInfo),
+    ]);
+    result_02.stdout.on("data", (result) => {
+      res.redirect("/result");
+    });
+  }
 });
