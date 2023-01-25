@@ -44,7 +44,8 @@ Apply Generative Adversarial Nets to generating leak data.
 > 
 > 2. Modeling
 >> 출처: [DCGAN](https://arxiv.org/pdf/1511.06434.pdf)
->> ![DCGAN 구조](https://user-images.githubusercontent.com/49435654/214224661-3dd07006-e5b6-425b-a638-c69c3dba77d1.PNG)
+>> ![dcgan구조](https://user-images.githubusercontent.com/49435654/214542274-3ed33377-1ba8-4a20-ac94-8a17dd7ed414.png)
+
 
 
 > 3. Generate Defective Image
