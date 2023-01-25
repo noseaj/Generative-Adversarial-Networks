@@ -132,3 +132,6 @@ dmypy.json
 /node_modules
 *.pkl
 .DS_Store
+
+# image
+test.jpg
