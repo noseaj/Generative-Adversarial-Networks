@@ -1,5 +1,5 @@
 # Generative-Adversarial-Networks
-(22/07 ~ 23/02) 광운대학교 산학연계 프로젝트
+(22/07 ~ 23/02) 광운대학교 산학연계 프로젝트 - Team 사미용두
 
 ## Introduction
 Apply Generative Adversarial Nets to generating leak data.
@@ -60,7 +60,7 @@ node.js & npm
 4. npm run start
 ```
 
-## Team (사미용두)
+## Contact Us
 * [김대현](https://github.com/DevDae)
 * [김재윤](https://github.com/kimjaeyoonn)
 * [김태영](https://github.com/kty4119)
