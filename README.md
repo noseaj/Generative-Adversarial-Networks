@@ -33,7 +33,7 @@ Apply Generative Adversarial Nets to generating leak data.
 
 ### Back-End & Front-End
 
-<img width="586" alt="BackEnd   FrontEnd" src="https://user-images.githubusercontent.com/49435654/214540132-9de4ccb3-9f93-4d88-913d-e7fca6e7e054.png">
+><img width="586" alt="BackEnd   FrontEnd" src="https://user-images.githubusercontent.com/49435654/214540132-9de4ccb3-9f93-4d88-913d-e7fca6e7e054.png">
 
 
 
