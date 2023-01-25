@@ -33,6 +33,10 @@ Apply Generative Adversarial Nets to generating leak data.
 
 ### Back-End & Front-End
 
+<img width="586" alt="BackEnd   FrontEnd" src="https://user-images.githubusercontent.com/49435654/214540132-9de4ccb3-9f93-4d88-913d-e7fca6e7e054.png">
+
+
+
 ### Modeling
 > 1. Pre-processing
 >> ![데이터 전처리 아키텍쳐(업데이트 필요)](https://user-images.githubusercontent.com/49435654/214227127-d231629b-cd5d-4150-ab03-8c82ebaaff55.PNG)
