@@ -117,7 +117,7 @@ def main(Name):
     Generator_Leak = Generator(ngpu).to(device)
     
     # 2. 모델 사용
-    weights = torch.load('./dcgan_293.pt',map_location=device)
+    weights = torch.load('./Generator_40.pt',map_location=device)
     Generator_Leak.load_state_dict(weights)
     
     # 3. 리크 생성
