@@ -53,19 +53,21 @@ Apply Generative Adversarial Nets to generating leak data.
 
 ## Data Structure
 ```
-data
- |- L_01-1 ~ L_01-6  # any images
-models
- |- generator.py
- |- discriminator.py
- |- train.py
-utils
- |- preprocess.py
- |- dataloader.py
-results
- |- scoring.py
-main.py
-requirements.txt
+SMYD
+|- data
+| |- L_01-1 ~ L_01-6  # any images
+|- models
+| |- generator.py
+| |- discriminator.py
+| |- train.py
+|- utils
+| |- preprocess.py
+| |- dataloader.py
+|- results
+| |- scoring.py
+|- main.py
+|- requirements.txt
+| ...
 
 ```
 
