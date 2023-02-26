@@ -54,8 +54,11 @@ Apply Generative Adversarial Nets to generating leak data.
 
 ## Requirements:
 * Python 3.9.5
-* OpenCV 4.6.0
+* OpenCV 4.6.0.66
 * Pytorch 1.12.1
+* Torchvision 0.13.1
+* Numpy 1.22.3
+* Scipy 1.7.1
 
 ## Prerequistes
 
@@ -66,7 +69,7 @@ node.js & npm
 ```
 1. git clone
 2. npm install 
-4. npm run start
+3. npm run start
 ```
 
 ## Contact Us
