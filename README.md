@@ -51,6 +51,23 @@ Apply Generative Adversarial Nets to generating leak data.
 > 3. Generate Defective Image
 >> ![불량이미지 생성 아키텍쳐(업데이트 필요)](https://user-images.githubusercontent.com/49435654/214229041-a5a0402b-aa18-4c9f-b651-fb126d86e511.PNG)
 
+## Data Structure
+```
+data
+ |- L_01-1 ~ L_01-6  # any images
+models
+ |- generator.py
+ |- discriminator.py
+ |- train.py
+utils
+ |- preprocess.py
+ |- dataloader.py
+results
+ |- scoring.py
+main.py
+requirements.txt
+
+```
 
 ## Requirements:
 * Python 3.9.5
@@ -61,17 +78,14 @@ Apply Generative Adversarial Nets to generating leak data.
 * Scipy 1.7.1
 
 ## Prerequistes
-
 node.js & npm
 
 ## checkout, build & run
-
 ```
 1. git clone
 2. npm install 
 3. npm run start
 ```
-
 ## Contact Us
 * [김대현](https://github.com/DevDae)
 * [김재윤](https://github.com/kimjaeyoonn)
