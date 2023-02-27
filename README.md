@@ -1,10 +1,5 @@
 # Generative-Adversarial-Networks
-<<<<<<< HEAD
-
-(22/07 ~ 23/02) 광운대학교 산학연계 프로젝트 - Team 사미용두
-=======
 * (2022-07 ~ 2023-02) 광운대학교 산학연계 SW프로젝트 : 사미용두팀
->>>>>>> upstream/main
 
 ## Introduction
 자동차 부품 제조 현장의 학습/검증용 데이터 불균형을 해결하기 위한 GAN 기반의 불량 데이터 생성
@@ -59,15 +54,6 @@ SMYD
 >  ↓  
 > 학습 데이터  
 
-<<<<<<< HEAD
-## Contact Us
-* [김대현](https://github.com/DevDae)
-* [김재윤](https://github.com/kimjaeyoonn)
-* [김태영](https://github.com/kty4119)
-* [손재성](https://github.com/noseaj)
-* [장효영](https://github.com/HyoYoung22)
-
-=======
 ### 2. Modeling
 > ![dcgan](https://user-images.githubusercontent.com/88760905/221587571-b73fd2b8-d170-4f2b-b5d0-a80e6b761645.png)  
 > 출처 : [DCGAN](https://arxiv.org/pdf/1511.06434.pdf)
@@ -108,4 +94,3 @@ SMYD
 # Team SMYD
 ### Contact Us
 * [김대현](https://github.com/DevDae) | [김재윤](https://github.com/kimjaeyoonn) | [김태영](https://github.com/kty4119) | [손재성](https://github.com/noseaj) | [장효영](https://github.com/HyoYoung22)
->>>>>>> upstream/main
